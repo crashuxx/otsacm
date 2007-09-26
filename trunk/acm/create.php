@@ -32,8 +32,8 @@ require ACM_ROOT.'lang/'.$acm_config['lang'].'/create.php';
 
 $page_title = $lang_common['Char create'];
 
-$db->query('SELECT id FROM '.$db->prefix.'players WHERE account_id = '.$cur_user['id']);
-
+$result = $db->query('SELECT id FROM '.$db->prefix.'players WHERE account_id = '.$cur_user['id'].' ');
+if( $db->num_rows($result) >= $acm_config['max_acc_chars'] ) message($lang_create['max chars reach']);
 
 // read spawns form map
 $spawns = SpawnsReader();
@@ -84,11 +84,10 @@ if( $_POST['foo'] == 'bar' ) {
 	
 	$playerID = $db->insert_id();
 	
-	$depots = array();
-	
-	$container = array();
-	$tree = array();
-	$root = array();
+	for( $i = 0; $i < 7; $i++ ) {
+		
+		$db->query('UPDATE '.$db->prefix.'player_skills SET value = '.$pt['skill'.(int)$i].' WHERE player_id = ' . $playerID . ' AND skillid = '.$i.' LIMIT 1 ');
+	}
 	
 	$rContainers = $db->query('SELECT * FROM '.$db->prefix.'acm_containers WHERE profile = '.(int)$voc.' ORDER BY id ASC');
 
@@ -135,8 +134,9 @@ if( $_POST['foo'] == 'bar' ) {
 		}
 	}
 	
-	//$db->query('COMMIT');
-	$db->query('ROLLBACK');
+	$db->query('COMMIT');
+//	$db->query('ROLLBACK');
+	message($lang_create['created'], 'players.php', $lang_common['Char list']);
 }
 
 ?>
