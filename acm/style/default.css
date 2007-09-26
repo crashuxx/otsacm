@@ -1,0 +1,459 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: white;
+	padding: 0;
+	margin: 0;
+	
+	margin-top: 10px;
+}
+
+img {
+	
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+/*	 #acmwrap 	*/
+
+#acmwrap {
+
+	width: 650px;
+	margin: 0 auto;
+}
+
+/*	 #brdtitle 	*/
+
+#brdtitle {
+	
+	margin: 0;
+	padding: 0;
+	background-color: #324671;
+	color: #FFFFFF;
+	
+	font-family: "Arial Black";
+	font-weight: normal;
+	font-size: medium;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#brdtitle.inbox {
+	
+	border: 0;
+	margin: 0;
+	padding-top: 42px;
+}
+
+#brdtitle h1 {
+	
+	border: 0;
+	display: inline;
+	margin: 0 0 0 4px;
+	padding-top: 0;
+	
+	font-family: "Arial Black";
+	font-weight: normal;
+	font-size: 26px;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/*	 #brdmenu 	*/
+
+#brdmenu {
+	
+	border: 0;
+	margin: 0;
+	padding: 0;
+	background-color: #718FBD;
+	
+	color: #FFFFFF;
+}
+
+#brdmenu ul {
+	
+	margin: 0;
+	padding: 0;
+	display: block;
+	
+}
+
+#brdmenu li {
+	
+	margin: 0;
+	padding: 0 2px 0 4px;
+	display: inline;
+	
+}
+
+#brdmenu a:link, #brdmenu a:active, #brdmenu a:visited {
+	font-family: Arial;
+	font-size: 10px;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#brdmenu a:hover {
+	
+	font-family: Arial;
+	font-size: 10px;
+	text-decoration: none;
+	color: #EEEEEE;
+}
+
+#brdstatus {
+	
+	margin: 0;
+	padding: 0;
+	background-color: #FAFAFA;
+	border: 1px solid #D1D7DC;
+	
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+}
+
+#brdstatus.inbox {
+	
+	padding: 2px 2px;
+}
+
+/*	 #brdmain	*/
+
+#brdmain {
+	
+	border: 0;
+	margin: 8px 0 2px 0;
+	padding: 0;
+	
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+}
+
+#brdmain a:link, #brdmain a:active, #brdmain a:visited {
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #324671;
+}
+
+#brdmain a:hover {
+	
+	font-family: Arial;
+	font-size: 10px;
+	text-decoration: underline;
+	color: #324671;
+}
+
+#brdmain .box {
+
+	margin: 0;
+	padding: 0;
+	background-color: #FAFAFA;
+	border: 1px solid #D1D7DC;
+}
+
+#brdmain .inbox {
+
+	border: 0;
+	margin: 4px 4px;
+	padding: 0;
+}
+
+#brdmain .message {
+	
+	border: 0;
+	margin: 6px 0;
+	padding: 0;
+	
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: left;
+	text-decoration: none;
+	color: #000000;
+}
+
+#brdmain .message p {
+	
+	margin: 2px;
+	padding: 4px 0 4px 0;
+}
+
+#brdmain .message a:link, #brdmain .message a:active, #brdmain .message a:visited {
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #324671;
+}
+
+#brdmain .message a:hover {
+	
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: underline;
+	color: #324671;
+}
+
+#acm_players table {
+	
+	width: 600px;
+	text-align: left;
+	margin: 10px auto;
+	padding: 0;
+}
+
+#acm_players th {
+	
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: #999999;
+	color: #FFFFFF;
+}
+
+#acm_players th.name {
+	
+	padding-left: 4px;
+	width: 250px;
+}
+
+#acm_players th.guild {
+	
+	text-align: center;
+	width: 150px;
+}
+
+#acm_players th.voc, #acm_players th.level {
+	
+	text-align: center;
+}
+
+#acm_players th.links {
+	
+	text-align: center;
+	width: 40px;
+}
+
+#acm_players td {
+	
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+}
+
+#acm_players td.name {
+	
+	padding-left: 2px;
+}
+
+#acm_players td.guild, #acm_players td.voc, #acm_players td.level {
+	
+	text-align: center;
+}
+
+#acm_players td.links {
+	
+	text-align: center;
+}
+
+#brdmain .tableform {
+	
+	width: 350px;
+	margin: 0 auto;
+}
+
+#brdmain .tableform th {
+	
+	width: 150px;
+	padding-right: 4px;
+	
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: right;
+	text-decoration: none;
+	color: #000000;
+}
+
+#brdmain form {
+	
+	margin: 0;
+	padding: 0;
+}
+
+#brdmain input {
+	
+	margin: 0;
+	padding: 2px 6px;
+	
+	border: 1px solid #D1D7DC;
+	background-color: white;
+	
+	font-family: Arial;
+	font-size: 11px;
+	color: black;
+}
+
+#brdmain input.radio {
+	
+	border: none;
+}
+
+#brdmain select {
+	
+	margin: 0;
+	padding: 1px 1px;
+	
+	border: 1px solid #D1D7DC;
+	background-color: white;
+	
+	font-family: Arial;
+	font-size: 11px;
+	color: black;
+}
+
+
+#brdmain .tablecreate {
+	
+	width: 550px;
+	margin: 10px auto;
+	padding: 0;
+}
+
+#brdmain .tablecreate th {
+	
+	width: 80px;
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: right;
+}
+
+#brdmain label {
+
+	display: inline;
+	margin: 0 6px;
+	padding: 0;
+	
+	font-family: Arial;
+	font-size: 11px;
+}
+
+/*	#brdmain	#editor	*/
+
+#acm_admin_editor .itemstree {
+
+	width: auto;
+	margin: 4px 6px 0 6px;
+	padding: 0 0 0 4px;
+	border-left: 1px solid black;
+
+}
+
+#acm_admin_editor p {
+
+	display: block;
+	width: auto;
+	padding: 0;
+	margin: 2px 0 0 0;
+}
+
+#acm_admin_editor strong {
+
+	width: 100px;
+	margin: 0 0 0 8px;
+	padding: 0;
+}
+
+#acm_admin_editor label {
+
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: bold;
+	
+	margin: 0 0 0 6px;
+	padding: 0;
+}
+
+#acm_admin_editor #brdmain a:link, #acm_admin_editor #brdmain a:active, #acm_admin_editor #brdmain a:visited {
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #324671;
+}
+
+#acm_admin_editor #brdmain a:hover {
+	
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: underline;
+	color: #324671;
+}
+
+#acm_admin_editor th {
+	
+	width: 80px;
+	text-align: right;
+}
+
+#acm_admin_options th {
+	
+	width: 180px;
+	text-align: right;
+}
+
+#acm_admin_options th h1 {
+	
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	background-color: #999999;
+	color: #FFFFFF;
+}
+
+/*	 #brdfoot	*/
+
+#brdfoot {
+	
+	border: 0;
+	margin: 0;
+	padding: 0;
+	
+	background-color: #FFFFFF;
+	
+	text-align: center;
+	font-family: Arial;
+	font-size: 10px;
+	text-decoration: none;
+	color: #000000;
+}
+
+#brdfoot p {
+	
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#brdfoot a:link, #brdfoot a:active, #brdfoot a:visited {
+	font-family: Arial;
+	font-size: 10px;
+	text-decoration: none;
+	color: #324671;
+}
+
+#brdfoot a:hover {
+	
+	font-family: Arial;
+	font-size: 10px;
+	text-decoration: none;
+	color: #324671;
+}

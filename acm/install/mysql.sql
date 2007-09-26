@@ -1,0 +1,87 @@
+CREATE TABLE `$__acm_config` (
+  `name` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `value` text collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `$__acm_config` (`name`, `value`) VALUES 
+('acc_max_number', '199'),
+('acc_min_number', '99'),
+('admin_email', ''),
+('admin_login', 'admin'),
+('admin_password', 'pass'),
+('base_url', 'http://localhost/acm'),
+('default_group', '1'),
+('depots_chest', '2594'),
+('depots_item', '2590'),
+('lang', 'English'),
+('mail_via_smtp', '1'),
+('map_name', 'map.otbm'),
+('ots_depots', '3'),
+('ots_dir', './otserv/data'),
+('pass_min_length', '6'),
+('rook', '0'),
+('rook_town', '1'),
+('smtp_host', ''),
+('smtp_pass', ''),
+('smtp_user', ''),
+('style', 'default'),
+('timeout_online', '180'),
+('title', 'ACM 3.0 Alpha'),
+('use_gz', '0'),
+('use_md5', '1');
+
+CREATE TABLE `$__acm_containers` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `content` int(11) default NULL,
+  `slot` int(11) default NULL,
+  `count` int(11) default NULL,
+  `profile` int(11) unsigned NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `profile` (`profile`),
+  KEY `slot` (`slot`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1001 ;
+
+
+CREATE TABLE `$__acm_profiles` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `skill0` int(11) default NULL,
+  `skill1` int(11) default NULL,
+  `skill2` int(11) default NULL,
+  `skill3` int(11) default NULL,
+  `skill4` int(11) default NULL,
+  `skill5` int(11) default NULL,
+  `skill6` int(11) default NULL,
+  `health` int(11) default NULL,
+  `healthmax` int(11) default NULL,
+  `direction` int(11) default NULL,
+  `experience` int(11) default NULL,
+  `lookbody` int(11) default NULL,
+  `lookfeet` int(11) default NULL,
+  `lookhead` int(11) default NULL,
+  `looklegs` int(11) default NULL,
+  `looktype` int(11) default NULL,
+  `maglevel` int(11) default NULL,
+  `mana` int(11) default NULL,
+  `manamax` int(11) default NULL,
+  `manaspent` int(11) default NULL,
+  `soul` int(11) default NULL,
+  `cap` int(11) default NULL,
+  `food` int(11) default NULL,
+  `loss_experience` int(11) default NULL,
+  `loss_mana` int(11) default NULL,
+  `loss_skills` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+INSERT INTO `$__acm_profiles` (`id`, `skill0`, `skill1`, `skill2`, `skill3`, `skill4`, `skill5`, `skill6`, `health`, `healthmax`, `direction`, `experience`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `maglevel`, `mana`, `manamax`, `manaspent`, `soul`, `cap`, `food`, `loss_experience`, `loss_mana`, `loss_skills`) VALUES
+(1, 1, 1, 1, 1, 0, 1, 1, 10, 10, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
+(2, 1, 1, 1, 1, 0, 1, 1, 10, 10, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
+(3, 1, 1, 1, 1, 0, 1, 1, 10, 10, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
+(4, 1, 1, 1, 1, 0, 1, 1, 10, 10, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
+(5, 1, 1, 1, 1, 0, 1, 1, 10, 10, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
+(11, 1, 1, 1, 1, 0, 1, 1, 10, 10, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
+(12, 1, 1, 1, 1, 0, 1, 1, 10, 10, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
+(13, 1, 1, 1, 1, 0, 1, 1, 10, 10, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
+(14, 1, 1, 1, 1, 0, 1, 1, 10, 10, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
+(15, 1, 1, 1, 1, 0, 1, 1, 10, 10, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);

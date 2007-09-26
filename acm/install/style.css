@@ -1,0 +1,250 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: white;
+	padding: 0;
+	margin: 0;
+	
+	margin-top: 10px;
+}
+
+img {
+	
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+/*	 #acmwrap 	*/
+
+#acmwrap {
+
+	width: 650px;
+	margin: 0 auto;
+}
+
+/*	 #brdtitle 	*/
+
+#brdtitle {
+	
+	margin: 0;
+	padding: 0;
+	background-color: #324671;
+	color: #FFFFFF;
+	
+	font-family: "Arial Black";
+	font-weight: normal;
+	font-size: medium;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#brdtitle.inbox {
+	
+	border: 0;
+	margin: 0;
+	padding-top: 8px;
+}
+
+#brdtitle h1 {
+	
+	border: 0;
+	display: inline;
+	margin: 0 0 0 4px;
+	padding-top: 0;
+	
+	font-family: "Arial Black";
+	font-weight: normal;
+	font-size: 26px;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/*	 #brdmain	*/
+
+#brdmain {
+	
+	border: 0;
+	margin: 8px 0 2px 0;
+	padding: 0;
+	
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+}
+
+#brdmain a:link, #brdmain a:active, #brdmain a:visited {
+	font-family: Arial;
+	font-size: 10px;
+	font-weight: normal;
+	text-decoration: none;
+	color: #324671;
+}
+
+#brdmain a:hover {
+	
+	font-family: Arial;
+	font-size: 10px;
+	text-decoration: underline;
+	color: #324671;
+}
+
+#brdmain .box {
+
+	margin: 0;
+	padding: 0;
+	background-color: #FAFAFA;
+	border: 1px solid #D1D7DC;
+}
+
+#brdmain .inbox {
+
+	border: 0;
+	margin: 4px 4px;
+	padding: 0;
+}
+
+#brdmain .message {
+	
+	border: 0;
+	margin: 6px 0;
+	padding: 0;
+	
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: left;
+	text-decoration: none;
+	color: #000000;
+}
+
+#brdmain .message p {
+	
+	margin: 2px;
+	padding: 4px 0 4px 0;
+}
+
+#brdmain .message a:link, #brdmain .message a:active, #brdmain .message a:visited {
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #324671;
+}
+
+#brdmain .message a:hover {
+	
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: underline;
+	color: #324671;
+}
+
+#brdmain form {
+	
+	margin: 0;
+	padding: 0;
+}
+
+#brdmain input {
+	
+	margin: 0;
+	padding: 2px 6px;
+	
+	border: 1px solid #D1D7DC;
+	background-color: white;
+	
+	font-family: Arial;
+	font-size: 11px;
+	color: black;
+}
+
+#brdmain input.radio {
+	
+	border: none;
+}
+
+#brdmain select {
+	
+	margin: 0;
+	padding: 1px 1px;
+	
+	border: 1px solid #D1D7DC;
+	background-color: white;
+	
+	font-family: Arial;
+	font-size: 11px;
+	color: black;
+}
+
+#brdmain label {
+
+	display: inline;
+	margin: 0 6px;
+	padding: 0;
+	
+	font-family: Arial;
+	font-size: 11px;
+}
+
+#acm_install table {
+
+	width: 400px;
+	margin: 0 auto;
+
+}
+
+#acm_install th {
+	
+	width: 180px;
+	text-align: right;
+}
+
+#acm_install th h1 {
+	
+	font-family: Arial;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	background-color: #999999;
+	color: #FFFFFF;
+}
+
+/*	 #brdfoot	*/
+
+#brdfoot {
+	
+	border: 0;
+	margin: 0;
+	padding: 0;
+	
+	background-color: #FFFFFF;
+	
+	text-align: center;
+	font-family: Arial;
+	font-size: 10px;
+	text-decoration: none;
+	color: #000000;
+}
+
+#brdfoot p {
+	
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#brdfoot a:link, #brdfoot a:active, #brdfoot a:visited {
+	font-family: Arial;
+	font-size: 10px;
+	text-decoration: none;
+	color: #324671;
+}
+
+#brdfoot a:hover {
+	
+	font-family: Arial;
+	font-size: 10px;
+	text-decoration: none;
+	color: #324671;
+}
