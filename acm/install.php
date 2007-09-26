@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * [ACM]Account Manager
+ * 
+ * Account Manager for OpenTibia Server
+ * 
+ * PHP versions 5
+ *
+ * Copyright (c) 2006-2007 Lukasz Pajak
+ * 
+ * LICENSE:
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * @author 		Lukasz Pajak <droopsik@gmail.com>
+ * @copyright 		2006-2007 Lukasz Pajak
+ * @license		GPL 
+ * @package		acm
+ * @version 		3
+ */
+
 define('ACM_VERSION', '3.0 Alpha');
 define('ACM_DEBUG', true);
 
@@ -122,6 +145,9 @@ if( $_POST['install'] == 1 ) {
 	$config[] = '$db_password = \''.$form['dbpass'].'\';';
 	$config[] = '$db_prefix = \''.$form['tableprefix'].'\';';
 	$config[] = '';
+	$config[] = '$db_file = \''.$form['dbfile'].'\';';
+	$config[] = '';
+	$config[] = '';
 	$config[] = '$session_prefix = \'acm_\';';
 	$config[] = '';
 	$config[] = 'define(\'ACM_DEBUG\', true);';
@@ -140,7 +166,7 @@ if( $_POST['install'] == 1 ) {
 		<th>Data base driver</td>
 		<td>
 			<select name="dbdriver" size="1" style="width: 140px">
-			<option value="sqlite" disabled="disabled" />SQLite
+			<option value="sqlite" />SQLite [not tested]
 			<option value="mysql" selected="selected" />MySQL
 			<option value="mysqli" />MySQLi
 			</select>
@@ -180,6 +206,16 @@ if( $_POST['install'] == 1 ) {
 		<th>DB name</th>
 		<td>
 			<input name="dbname" value="otserv" type="text">
+		</td>
+	</tr>
+	
+	<tr>
+ 		<th colspan="2" class="head"><h1>SQLite config</h1></th>
+ 	</tr>
+	<tr>
+		<th>File</th>
+		<td>
+			<input name="dbfile" value="" type="text" />
 		</td>
 	</tr>
 		

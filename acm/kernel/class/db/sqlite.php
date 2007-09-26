@@ -23,7 +23,7 @@
  * @version 		3
  */
 
-class MySQLiLayer {
+class SQLiteLayer {
 
 	/**
 	 * DB handle
@@ -38,12 +38,6 @@ class MySQLiLayer {
 	 */
 	protected $hResult = null;
 	/**
-	 * DB name
-	 *
-	 * @var string
-	 */
-	protected $sDBName = null;
-	/**
 	 * Query Count
 	 *
 	 * @var int
@@ -55,25 +49,15 @@ class MySQLiLayer {
 	/**
 	 * Connecting to db
 	 * 
-	 * @param string	$host		example: host:port
-	 * @param string	$username
-	 * @param string	$password
-	 * @param string	$name		db name
+	 * @param string	$file
 	 * @param string	$prefix		table prefix
 	 */
-	public function __construct($host, $username, $password, $name, $prefix = '')
+	public function __construct($file, $prefix = '')
 	{
-		if( strpos($host, ':') !== false)
-			list($host, $port) = explode(':', $host);
+		$this->hDB = sqlite_open($filename, 0666, $error);
 			
-		if ( isset($port) )
-			$this->hDB = @mysqli_connect($host, $username, $password, $name, $port);
-		else
-			$this->hDB = @mysqli_connect($host, $username, $password, $name);
+		if ( !$this->hDB ) error('Unable to load SQLite file. SQLite reported: '.$error, __FILE__, __LINE__);
 			
-		if ( !$this->hDB )
-			error('Unable to connect to MySQL and select database. MySQL reported: '.mysqli_connect_error(), __FILE__, __LINE__);
-		
 		$this->prefix = $prefix;
 	}
 	
@@ -93,10 +77,7 @@ class MySQLiLayer {
 	{
 		if ($this->hDB)
 		{
-			if ($this->hResult)
-				@mysqli_free_result($this->hResult);
-
-			@mysqli_close($this->hDB);
+			@sqlite_close($this->hDB);
 		}
 		unset($this->hResult);
 		unset($this->hDB);
@@ -116,7 +97,7 @@ class MySQLiLayer {
 		
 		$this->iQueryCount++;
 
-		$this->hResult = @mysqli_query($this->hDB, $sQuery);
+		$this->hResult = sqlite_query($sQuery, $this->hDB);
 		
 		return $this->hResult;
 	}
@@ -130,7 +111,7 @@ class MySQLiLayer {
 	public function fetch_assoc($hResult = null)
 	{
 		$result = ($hResult) ? $hResult : $this->hResult;
-		return ($result) ? @mysqli_fetch_assoc($result) : false;
+		return ($result) ? @sqlite_fetch_array($result, SQLITE_ASSOC) : false;
 	}
 
 	/**
@@ -142,7 +123,7 @@ class MySQLiLayer {
 	public function fetch_row($hResult = null)
 	{
 		$result = ($hResult) ? $hResult : $this->hResult;
-		return ($result) ? @mysqli_fetch_row($result) : false;
+		return ($result) ? @sqlite_fetch_array($result, SQLITE_NUM) : false;
 	}
 
 	/**
@@ -154,7 +135,7 @@ class MySQLiLayer {
 	public function num_rows($hResult = null)
 	{
 		$result = ($hResult) ? $hResult : $this->hResult;
-		return ($result) ? @mysqli_num_rows($result) : false;
+		return ($result) ? @sqlite_num_rows($result) : false;
 	}
 	
 	/**
@@ -164,7 +145,7 @@ class MySQLiLayer {
 	 */
 	public function insert_id()
 	{
-		return @mysqli_insert_id($this->hDB);
+		return @sqlite_last_insert_rowid($this->hDB);
 	}
 	
 	/**
@@ -175,8 +156,7 @@ class MySQLiLayer {
 	 */
 	public function free($hResult = null)
 	{
-		$result = ($hResult) ? $hResult : $this->hResult;
-		return ($result) ? @mysqli_free_result($result) : false;
+//		$result = ($hResult) ? $hResult : $this->hResult;
 	}
 	
 	/**
@@ -187,7 +167,7 @@ class MySQLiLayer {
 	 */
 	public function escape($string)
 	{
-		return is_string($string) ? mysqli_real_escape_string($this->hDB, $string) : '';
+		return is_string($string) ? sqlite_escape_string($string) : '';
 	}
 
 	public function query_dump()
@@ -197,7 +177,7 @@ class MySQLiLayer {
 	
 	public function error() 
 	{
-		return end($this->queries).' '.mysqli_error($this->hDB);
+		return end($this->queries).' '.sqlite_error_string($this->hDB);
 	}
 }
 

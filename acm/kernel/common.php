@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * [ACM]Account Manager
+ * 
+ * Account Manager for OpenTibia Server
+ * 
+ * PHP versions 5
+ *
+ * Copyright (c) 2006-2007 Lukasz Pajak
+ * 
+ * LICENSE:
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * @author 		Lukasz Pajak <droopsik@gmail.com>
+ * @copyright 		2006-2007 Lukasz Pajak
+ * @license		GPL 
+ * @package		acm
+ * @version 		3
+ */
+
 if(!defined('ACM_ROOT')) exit();
 if(defined('ACM_COMMON_INCLUDED')) return; else define('ACM_COMMON_INCLUDED', true);
 
@@ -41,17 +64,22 @@ if( get_magic_quotes_gpc() )
 }
 
 switch($db_type) {
-	
+
 	case 'mysql':
 		require_once ACM_ROOT.'kernel/class/db/mysql.php';
 		$db = new MySQLLayer($db_host, $db_username, $db_password, $db_name, $db_prefix);
 		break;
-	
+
 	case 'mysqli':
 		require_once ACM_ROOT.'kernel/class/db/mysqli.php';
 		$db = new MySQLiLayer($db_host, $db_username, $db_password, $db_name, $db_prefix);
 		break;
-		
+
+	case 'sqlite':
+		require_once ACM_ROOT.'kernel/class/db/sqlite.php';
+		$db = new SQLiteLayer($db_file, $db_prefix);
+		break;
+
 	default:
 		error('Unknown database type. DB type: '.$db_type, __FILE__, __LINE__);
 }
