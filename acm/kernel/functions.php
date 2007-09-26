@@ -267,8 +267,16 @@ function unregister_globals()
  * @param string $file
  * @return array
  */
-function ItemsReader($file)
+function ItemsReader($file = null)
 {
+	global $acm_config;
+	
+	$items = get_cache('items.dump', 0);
+	
+	if( $items ) return unserialize($items);
+	
+	if( $file == null ) $file = $acm_config['ots_dir'].'/items/items.xml';
+	
 	$xml = new DOMDocument();
 	
 	if( !$xml->load($file) ) return null;
@@ -302,6 +310,8 @@ function ItemsReader($file)
 		$items[ (int)$tag->getAttribute('id') ] = array('name' => $tag->getAttribute('name'), 'container' => $container);
 	}
 	
+	if( $items ) set_cache('items.dump', serialize($items));
+	
 	return $items;
 }
 
@@ -313,8 +323,18 @@ function ItemsReader($file)
  * @param string $file
  * @return array
  */
-function SpawnsReader($file)
+function SpawnsReader($file = null)
 {
+	global $acm_config;
+	
+	$spawns = get_cache('spawns.dump', 0);
+	if( $spawns ) {
+		
+		return unserialize($spawns);
+	}
+	
+	if( $file == null ) $file = $acm_config['ots_dir'].'/world/'.$acm_config['map_name'];
+	
 	// opens file for reading
 	$file = @fopen($file, 'rb');
 
@@ -351,6 +371,8 @@ function SpawnsReader($file)
 				break;
 			}
 		}
+		
+		if( $spawns ) set_cache('spawns.dump', serialize($spawns));
 	}
 	else return null;
 	

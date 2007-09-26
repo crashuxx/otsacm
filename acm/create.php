@@ -5,15 +5,15 @@ require ACM_ROOT.'kernel/common.php';
 
 if( $cur_user['is_guest'] == true ) redirect('login.php');
 
-// read spawns form map
-$spawns = get_cache('spawns.dump', 0);
-if( !$spawns ) {
-		
-	$spawns = SpawnsReader($acm_config['ots_dir'].'/world/'.$acm_config['map_name']);
-	if( $spawns ) set_cache('spawns.dump', serialize($spawns));
-}
-else $spawns = unserialize($spawns);
+require ACM_ROOT.'lang/'.$acm_config['lang'].'/create.php';
 
+$page_title = $lang_common['Char create'];
+
+$db->query('SELECT id FROM '.$db->prefix.'players WHERE account_id = '.$cur_user['id']);
+
+
+// read spawns form map
+$spawns = SpawnsReader();
 
 if( $_POST['foo'] == 'bar' ) {
 	
@@ -36,6 +36,12 @@ if( $_POST['foo'] == 'bar' ) {
 	
 	$profile = $voc + 1 + 10 * $sex;
 	
+	
+	$result = $db->query('SELECT id FROM '.$db->prefix.'players WHERE name = "'.$db->escape($name).'" LIMIT 1');
+	
+	if( $db->num_rows($result) == 1 ) message($lang_create['exists'], 'javascript:history.go(-1)');
+	
+	
 	$rProfile = $db->query('SELECT * FROM '.$db->prefix.'acm_profiles WHERE id = '.$profile.' LIMIT 1') or error('Unable to fetch acm_profiles table.',__FILE__, __LINE__, true);
 	$rContainer = $db->query('SELECT * FROM '.$db->prefix.'acm_containers WHERE id = '.$voc.' ORDER BY slot ASC') or error('Unable to fetch acm_containers table.',__FILE__, __LINE__, true);
 	
@@ -49,7 +55,7 @@ if( $_POST['foo'] == 'bar' ) {
 	$db->query('START TRANSACTION');
 	
 	$db->query( 'INSERT INTO '.$db->prefix.'players (name ,account_id ,group_id ,sex ,vocation ,experience ,level ,maglevel ,health ,healthmax ,mana ,manamax ,manaspent ,soul ,direction ,lookbody ,lookfeet ,lookhead ,looklegs ,looktype ,lookaddons ,posx ,posy ,posz ,cap ,lastlogin ,lastip ,save ,redskulltime ,redskull ,guildnick ,rank_id ,town_id ,loss_experience ,loss_mana ,loss_skills) '.
-				'VALUES ("'.$db->escape($name).'", '.$cur_user['id'].', '.$acm_config['default_group'].', '.$sex.', '.$voc.', '.$pt['experience'].', '.$level.', '.$pt['maglevel'].', '.$pt['health'].', '.$pt['healthmax'].', '.$pt['mana'].', '.$pt['manamax'].', '.$pt['manaspent'].', '.$pt['soul'].', '.$pt['direction'].', '.$pt['lookbody'].', '.$pt['lookfeet'].', '.$pt['lookhead'].', '.$pt['looklegs'].', '.$pt['looktype'].', 0, 0, 0, 0, '.$pt['cap'].', 0, 0, 0, 0, 0, "", 0, '.$town.', '.$pt['loss_experience'].', '.$pt['loss_mana'].', '.$pt['loss_skills'].')');
+				'VALUES ("'.$db->escape($name).'", '.$cur_user['id'].', '.$acm_config['default_group'].', '.$sex.', '.$voc.', '.$pt['experience'].', '.$level.', '.$pt['maglevel'].', '.$pt['health'].', '.$pt['healthmax'].', '.$pt['mana'].', '.$pt['manamax'].', '.$pt['manaspent'].', '.$pt['soul'].', '.$pt['direction'].', '.$pt['lookbody'].', '.$pt['lookfeet'].', '.$pt['lookhead'].', '.$pt['looklegs'].', '.$pt['looktype'].', 0, 0, 0, 0, '.$pt['cap'].', 0, 0, 0, 0, 0, "", 0, '.$town.', '.$pt['loss_experience'].', '.$pt['loss_mana'].', '.$pt['loss_skills'].')') or error('Cannot insert into players table.',__FILE__ , __LINE__, true);
 	
 	$playerID = $db->insert_id();
 	
@@ -104,8 +110,8 @@ if( $_POST['foo'] == 'bar' ) {
 		}
 	}
 	
-	$db->query('COMMIT');
-	//$db->query('ROLLBACK');
+	//$db->query('COMMIT');
+	$db->query('ROLLBACK');
 }
 
 ?>

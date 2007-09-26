@@ -43,6 +43,7 @@ require ACM_ROOT.'lang/'.$acm_config['lang'].'/options.php';
 </div>
 <?php
 
+$page_title = $lang_common['Chars profiles'];
 $page_style = 'admin_profiles';
 require ACM_ROOT.'kernel/finalize.php';
 

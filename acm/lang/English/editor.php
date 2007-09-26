@@ -2,6 +2,8 @@
 
 $lang_editor = array (
 
+'Edtior'			=>	'Items Sheet Editor',
+
 'head'			=>	'Head slot',
 'necklace'		=>	'Necklace slot',
 'backpack'		=>	'Backpack slot',
