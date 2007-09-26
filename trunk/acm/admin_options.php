@@ -159,13 +159,8 @@ $acm_config = load_config(false);
 		<td>
 		<select name="rook_town" size="1">
 <?php
-$spawns = get_cache('spawns.dump', 0);
-if( !$spawns ) {
-		
-	$spawns = SpawnsReader($acm_config['ots_dir'].'/world/'.$acm_config['map_name']);
-	if( $spawns ) set_cache('spawns.dump', serialize($spawns));
-}
-else $spawns = unserialize($spawns);
+// read spawns form map
+$spawns = SpawnsReader();
 
 if( $spawns ) {
 	

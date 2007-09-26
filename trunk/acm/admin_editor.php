@@ -83,14 +83,8 @@ else if( !strcmp( strtolower($_GET['action']), 'delete') ) {
 		items_tree_delete($container[$id]);
 	}
 }
-
-$items = get_cache('items.dump', 0);
-if( !$items ) {
 		
-	$items = ItemsReader($acm_config['ots_dir'].'/items/items.xml');
-	if( $items ) set_cache('items.dump', serialize($items));
-}
-else $items = unserialize($items);
+$items = ItemsReader($acm_config['ots_dir'].'/items/items.xml');
 
 list($container, $tree, $rows) = loadTemplate();
 
@@ -244,6 +238,7 @@ foreach( $items as $key => $val) {
 </div>
 <?php
 
+$page_title = $lang_editor['Edtior'];
 $page_style = 'admin_editor';
 require ACM_ROOT.'kernel/finalize.php';
 
