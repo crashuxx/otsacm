@@ -29,7 +29,7 @@ define('ACM_DEBUG', true);
 define('ACM_ROOT', './');
 if( file_exists(ACM_ROOT.'config.php') ) die('ACM is already installed.');
 
-$tpl_main = file_get_contents(ACM_ROOT.'kernel/template/main.tpl');
+$tpl_main = file_get_contents(ACM_ROOT.'kernel/template/main.htpl');
 
 // <acm_char_encoding>
 $tpl_main = str_replace('<acm_char_encoding>', 'utf-8', $tpl_main);

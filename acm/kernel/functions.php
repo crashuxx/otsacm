@@ -126,7 +126,7 @@ function error($message, $file, $line, $sql = false)
 	@ob_end_clean();
 	
 	// Template load
-	$tpl_error = trim(file_get_contents(ACM_ROOT.'kernel/template/main.tpl'));
+	$tpl_error = trim(file_get_contents(ACM_ROOT.'kernel/template/main.htpl'));
 	
 	// <error_message>
 	$tpl_error = str_replace('<error_message>', '<p>'. $message .'</p>', $tpl_error);
