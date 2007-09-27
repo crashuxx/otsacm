@@ -20,6 +20,7 @@
  * @copyright 		2006-2007 Lukasz Pajak
  * @license		GPL 
  * @package		acm
+ * @subpackage 	ModAdmin
  * @version 		3
  */
 

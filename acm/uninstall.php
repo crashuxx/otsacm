@@ -1,5 +1,28 @@
 <?php
 
+/**
+ * [ACM]Account Manager
+ * 
+ * Account Manager for OpenTibia Server
+ * 
+ * PHP versions 5
+ *
+ * Copyright (c) 2006-2007 Lukasz Pajak
+ * 
+ * LICENSE:
+ * 
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * @author 		Lukasz Pajak <droopsik@gmail.com>
+ * @copyright 		2006-2007 Lukasz Pajak
+ * @license		GPL 
+ * @package		acm
+ * @version 		3
+ */
+
 if( isset($_SERVER['REMOTE_ADDR']) || !empty($_SERVER['REMOTE_ADDR']) ) die('Access Denied');
 
 define('ACM_ROOT', './');
@@ -56,15 +79,15 @@ if( $dir ) {
 
 
 echo 'DROP TABLE '.$db->prefix.'acm_config...'."\n";
-//$db->query('DROP TABLE '.$db->prefix.'acm_config');
+$db->query('DROP TABLE '.$db->prefix.'acm_config');
 
 echo 'DROP TABLE '.$db->prefix.'acm_containers...'."\n";
-//$db->query('DROP TABLE '.$db->prefix.'acm_containers');
+$db->query('DROP TABLE '.$db->prefix.'acm_containers');
 
 echo 'DROP TABLE '.$db->prefix.'acm_profiles...'."\n";
-//$db->query('DROP TABLE '.$db->prefix.'acm_profiles');
+$db->query('DROP TABLE '.$db->prefix.'acm_profiles');
 
-//unlink(ACM_ROOT.'config.php');
+unlink(ACM_ROOT.'config.php');
 echo 'Deleted '.ACM_ROOT.'config.php'."\n";
 
 echo "\n".'uninstaled'."\n";
