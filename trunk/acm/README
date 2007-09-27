@@ -1,0 +1,37 @@
+Account Manager for Open Tibia Server
+==============================
+Copyright (C) 2006-2007 Lukas Pajak
+
+  This program is free software; you can redistribute it and/or
+  modify it under the terms of the GNU General Public License
+  as published by the Free Software Foundation; either version 2
+  of the License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+What is it ?
+  ACM is a script writed in PHP for creating and managing account based on Open Tibia Server databases.
+
+Where I can downlod it?
+  At http://code.google.com/p/otsacm
+
+Hardware and software requirements:
+  Apache
+  PHP >= 5.0 (with allow_call_time_pass_reference set to true in your INI file)
+  MySQL >= 5.0 or SQLite
+
+Installation instructions:
+  See INSTALL file for install and uninstall info.
+
+Contact information:
+  Lukas 'crashu' Pajak <droopsik@gmail.com>
+  
+Secial thanks to:
+  Wrzasq <wrzasq@gmail.com> - for Items & Spawns Reader
