@@ -171,7 +171,7 @@ function message($message, $link = null, $link_title = null)
 	}
 	else $links = '';
 	
-	$tpl_msg = file_get_contents(ACM_ROOT.'kernel/template/message.tpl');
+	$tpl_msg = file_get_contents(ACM_ROOT.'kernel/template/message.htpl');
 
 	$tpl_msg = str_replace('<acm_message>', $message, $tpl_msg);
 	$tpl_msg = str_replace('<acm_links>', $links, $tpl_msg);

@@ -27,7 +27,7 @@ if(!defined('ACM_ROOT')) exit();
 if(defined('ACM_HEADER_INCLUDED')) return; else define('ACM_HEADER_INCLUDED', true);
 
 // Template load
-$tpl_main = trim(file_get_contents(ACM_ROOT.'kernel/template/main.tpl'));
+$tpl_main = trim(file_get_contents(ACM_ROOT.'kernel/template/main.htpl'));
 
 // <acm_char_encoding>
 $tpl_main = str_replace('<acm_char_encoding>', $lang_common['lang_encoding'], $tpl_main);
