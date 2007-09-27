@@ -10,6 +10,8 @@ INSERT INTO `$__acm_config` (`name`, `value`) VALUES
 ('admin_email', ''),
 ('admin_login', 'admin'),
 ('admin_password', 'pass'),
+('antiflood_ip', '1'),
+('antiflood_ip_time', '900'),
 ('base_url', 'http://localhost/acm'),
 ('default_group', '1'),
 ('depots_chest', '2594'),
@@ -88,3 +90,10 @@ INSERT INTO `$__acm_profiles` (`id`, `skill0`, `skill1`, `skill2`, `skill3`, `sk
 (13, 10, 10, 10, 10, 10, 10, 10, 250, 250, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
 (14, 10, 10, 10, 10, 10, 10, 10, 250, 250, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10),
 (15, 10, 10, 10, 10, 10, 10, 10, 250, 250, 3, 1, 30, 50, 20, 40, 128, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10);
+
+
+CREATE TABLE IF NOT EXISTS `acm_antiflood` (
+  `ip` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
+  PRIMARY KEY  (`ip`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8_unicode_ci;
