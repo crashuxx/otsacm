@@ -40,7 +40,19 @@ $page_title = $lang_register['Page register'];
 <?php
 
 if( $_POST['foo'] == 'bar' ) {
+	
+	if( $acm_config['antiflood_ip'] == true ) {
 		
+		$rAntiFlood = $db->query('SELECT time FROM '.$db->prefix.'acm_antiflood WHERE ip = '. ip2long($_SERVER['REMOTE_ADDR']).'  LIMIT 1' );
+		if( $db->num_rows($rAntiFlood) == 1 ) {
+			
+			$antiflood = $db->fetch_row($rAntiFlood);
+			$antiflood = $antiflood[0];
+			
+			if( $antiflood + $acm_['antiflood_ip_time'] < time() ) message($lang_reginister['to fast'], 'javascript:history.go(-1)');
+		}
+	}
+	
 	if( function_exists('filter_var') )
 		$bEmail = preg_match('/^[0-9a-z\._\-]{1,25}@([0-9a-z\._\-]{1,25}\.[a-z]{2,3})$/' , $_POST['email'] );
 	else $bEmail = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
@@ -103,6 +115,13 @@ if( $_POST['foo'] == 'bar' ) {
 					$message = $lang_register['Reg e-mail'].' '.'<a href="mailto:'.$acm_config['admin_email'].'" >'.$acm_config['admin_email'].'</a>.';
 					$link = 'login.php';
 					$link_title =  $lang_common['Login'];
+					
+					if( $acm_config['antiflood_ip'] == true ) {
+					
+						if( isset( $antiflood ) )
+							$db->query('UPDATE '.$db->prefix.'acm_antiflood SET time = '.time().' WHERE ip = '. ip2long($_SERVER['REMOTE_ADDR']).'  LIMIT 1' );
+						else $db->query('INSERT INTO '.$db->prefix.'acm_antiflood (ip, time) VALUES ('. ip2long($_SERVER['REMOTE_ADDR']).', '.time().')');						
+					}
 				}
 				else {	//	Out of account numbers
 					
