@@ -2,6 +2,8 @@
 /**
  * PHPMailer language file.  
  * English Version
+ * 
+ * @package		PHPMailer
  */
 
 $PHPMAILER_LANG = array();
