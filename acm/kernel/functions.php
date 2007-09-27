@@ -112,37 +112,47 @@ function load_config($bAllowCache = true)
 	return $acm_config;
 }
 
+/**
+ * Throw error message to web borwser & die
+ *
+ * @param string $message
+ * @param string $file		__FILE__
+ * @param int $line			__LINE__
+ * @param bool $sql		error in DB
+ */
 function error($message, $file, $line, $sql = false)
 {
 	@ob_end_clean();
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-</head>
-<body>
-<p>
-<?php
-	echo $message; 
+	
+	// Template load
+	$tpl_error = trim(file_get_contents(ACM_ROOT.'kernel/template/main.tpl'));
+	
+	// <error_message>
+	$tpl_error = str_replace('<error_message>', '<p>'. $message .'</p>', $tpl_error);
+	
+	$debug_info = '';
 
+	// if DEBUG mode ON show error info
 	if( defined('ACM_DEBUG') ) {
-?>
-	<?php echo $file;?> 
-	<?php echo $line;?>
-	<br />
-<?php
-	if( $sql == true) echo $GLOBALS['db']->error();
+
+		$debug_info[] = '<p>'. $file .' '. $line .'</p>';
+
+		// if error in db show last db query & error message
+		if( $sql == true) $debug_info[] = '<p>'. $GLOBALS['db']->error() .'</p>';
+			
+		$debug_info = implode("\n", $debug_info);
 	}
-?>
-</p>
-</body>
-</html>
-<?php	
+	
+	// <// <error_message>>
+	$tpl_error = str_replace('<debug_info>', $debug_info, $tpl_error);
+	
+	echo $tpl_error;
+	
 	exit();
 }
 
 /**
- * Message
+ * Show message and finalize
  * 
  * @param string $message
  * @param string $link	url
