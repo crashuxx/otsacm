@@ -139,6 +139,7 @@ if( $_POST['foo'] == 'bar' ) {
 	
 	$db->query('COMMIT');
 //	$db->query('ROLLBACK');
+	$redirect = 'players.php';
 	message($lang_create['created'], 'players.php', $lang_common['Char list']);
 }
 
