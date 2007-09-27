@@ -1,0 +1,10 @@
+Install:
+
+  To install acm run http:/<server adres>/instal.php from your web browser.
+
+
+Uninstal:
+
+  run comandline and type:
+
+	make uninstall
