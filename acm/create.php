@@ -45,6 +45,9 @@ if( $_POST['foo'] == 'bar' ) {
 	
 	if( !preg_match("/^[a-zA-Z0-9\ ]+$/", $name) ) message($lang_create['name uncorrect'], 'javascript:history.go(-1)');
 	
+	$nameLength = strlen($name);
+	if( $nameLength < $acm_config['name_min_length'] || $nameLength > $acm_config['name_max_length'] ) message($lang_create['name uncorrect'], 'javascript:history.go(-1)');
+	
 	if( !$acm_config['rook'] ) { 
 	 	
 		$voc = (int)$_POST['vocation'];

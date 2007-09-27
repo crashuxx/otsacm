@@ -30,6 +30,8 @@ INSERT INTO `$__acm_config` (`name`, `value`) VALUES
 ('title', 'ACM 3.0 Alpha'),
 ('use_gz', '0'),
 ('max_acc_chars', '5'),
+('name_min_length', '3'),
+('name_max_length', '18'),
 ('use_md5', '1');
 
 CREATE TABLE `$__acm_containers` (
